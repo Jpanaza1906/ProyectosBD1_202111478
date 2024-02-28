@@ -53,7 +53,7 @@ ALTER TABLE pais ADD CONSTRAINT pais_pk PRIMARY KEY ( id_pais );
 CREATE TABLE producto (
     id_producto  INTEGER NOT NULL,
     nombre       VARCHAR2(25 CHAR) NOT NULL,
-    precio       INTEGER NOT NULL,
+    precio       NUMBER(10,2) NOT NULL,
     id_categoria INTEGER NOT NULL
 );
 
