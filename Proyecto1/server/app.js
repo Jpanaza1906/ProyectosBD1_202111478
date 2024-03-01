@@ -14,6 +14,7 @@ const morgan = require('morgan');
 // Importar las rutas
 const conexionRouter = require('./routes/conexion');
 const procesosdb = require('./routes/procesosdb');
+const consultasdb = require('./routes/consultasdb');
 
 //--------------------------------------------------------------------------------
 
@@ -26,6 +27,7 @@ app.use(morgan('dev'));
 // Usar las rutas de conexion
 app.use('/', conexionRouter);
 app.use('/',procesosdb);
+app.use('/',consultasdb);
 
 // Iniciar el servidor de express
 const PORT = process.env.PORT || 3000;
