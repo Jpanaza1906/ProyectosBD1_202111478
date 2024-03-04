@@ -12,6 +12,7 @@ async function eliminarTablas(){
         const query = `
             BEGIN
                 EXECUTE IMMEDIATE 'DROP table ORDEN';
+                EXECUTE IMMEDIATE 'DROP table DETALLE_ORDEN';
                 EXECUTE IMMEDIATE 'DROP table PRODUCTO';
                 EXECUTE IMMEDIATE 'DROP table VENDEDOR';
                 EXECUTE IMMEDIATE 'DROP table CLIENTE';

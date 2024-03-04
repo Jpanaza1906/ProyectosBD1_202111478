@@ -12,7 +12,7 @@ async function cargarTablas(csvFilePaths) {
 
         //Lista de tablas deseadas
         //const tablasDeseadas = ['ORDEN'];
-        const tablasDeseadas = ['PAIS', 'CATEGORIA', 'CLIENTE', 'VENDEDOR', 'PRODUCTO', 'ORDEN'];
+        const tablasDeseadas = ['PAIS', 'CATEGORIA', 'CLIENTE', 'VENDEDOR', 'PRODUCTO', 'ORDEN', 'ORDENE'];
         //const tablasDeseadas = ['PAIS', 'CATEGORIA', 'CLIENTE', 'VENDEDOR', 'PRODUCTO'];
 
         // recorrer las tablas deseadas
@@ -51,8 +51,20 @@ async function cargarTablas(csvFilePaths) {
                                 }
                                 return `'${cleanedValue}'`;
                             });
-                            const sql = `INSERT INTO "SBD1P1"."${tabla}" VALUES (${values.join(',')})`;
-                            await connection.execute(sql);
+                            let sql = '';
+                            let sql1 = '';
+                            if (tabla === 'ORDEN') {
+                                sql = `INSERT INTO "SBD1P1"."DETALLE_ORDEN" VALUES (${values[0]}, ${values[1]}, ${values[4]}, ${values[5]}, ${values[6]})`;
+                                await connection.execute(sql);
+                            }else if(tabla === 'ORDENE'){
+                                if(values[1] == "'1'"){
+                                    sql = `INSERT INTO "SBD1P1"."ORDEN" VALUES (${values[0]}, ${values[2]}, ${values[3]}, ${values[1]})`;
+                                    await connection.execute(sql);
+                                }
+                            }else{
+                                sql = `INSERT INTO "SBD1P1"."${tabla}" VALUES (${values.join(',')})`;
+                                await connection.execute(sql);
+                            }
                             //await connection.commit();
 
                         } catch (error) {
