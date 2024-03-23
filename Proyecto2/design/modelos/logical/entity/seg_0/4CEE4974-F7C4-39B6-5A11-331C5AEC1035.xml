@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4CEE4974-F7C4-39B6-5A11-331C5AEC1035" name="Debito">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 15:37:27 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id-debito" id="43B8CC24-7C4E-E850-C409-327588BB2E75">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:35:26 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_transaccion" id="146B5BD2-11DC-DBF4-B17C-AD20B7E015D9">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 18:26:16 UTC</createdTime>
+<generatorID>40B0ECE3-2B5A-3EDC-0A0B-88214AE71B0C</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>00C72AD7-0A24-0B52-B8D5-93B116365BB4</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id-cuenta" id="FA93E0F0-52A5-65AD-8998-E2F3E0CB8155">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 18:15:26 UTC</createdTime>
+<generatorID>E7F36FDA-17FE-9B0E-08A2-EF4ECC0A755F</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>12478309-7F87-F1BE-024F-7B8BDB3BA1E3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha" id="1A02C14F-C1AD-B6B8-4B9B-CECBC591A8B7">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:35:40 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="monto" id="4E579006-D243-902D-CA00-33959F47C3E3">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:36:24 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,12,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="detalle" id="65199081-0CF6-9720-E82B-1D0D35B58DA8">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:36:41 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="7D1231E3-6A29-DF05-CACA-BEAF870504D7" name="Debito PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:35:34 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>43B8CC24-7C4E-E850-C409-327588BB2E75</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

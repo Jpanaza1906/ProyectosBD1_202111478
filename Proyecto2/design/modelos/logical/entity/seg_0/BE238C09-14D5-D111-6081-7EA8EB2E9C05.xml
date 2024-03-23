@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BE238C09-14D5-D111-6081-7EA8EB2E9C05" name="Correo">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:20:26 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id-correo" id="8A2248E7-4889-F018-B0A6-7F9F0BADD6BB">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:23:22 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id-cliente" id="3EBEA30B-11E4-7171-9BD1-EDFA4C12449A">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:41:20 UTC</createdTime>
+<generatorID>72CEC896-C0F7-71A7-9768-172D3422E424</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>34FB9C49-46A2-2F9C-6E58-551628A0CE2D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="direccion" id="D78ECD80-2D5D-29BB-6DB1-860182D578EC">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:23:36 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4DA16F9F-67EA-A8B0-E475-45E06BDD21C4" name="Correo PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:23:34 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8A2248E7-4889-F018-B0A6-7F9F0BADD6BB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

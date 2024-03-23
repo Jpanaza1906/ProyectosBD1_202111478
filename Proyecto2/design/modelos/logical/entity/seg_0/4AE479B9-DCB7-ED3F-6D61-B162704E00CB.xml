@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4AE479B9-DCB7-ED3F-6D61-B162704E00CB" name="Cliente">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 15:35:54 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id-cliente" id="34FB9C49-46A2-2F9C-6E58-551628A0CE2D">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 16:41:59 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id-tcliente" id="D754FEF8-3BD3-F335-F22D-44C27CD4F2B6">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:50:53 UTC</createdTime>
+<generatorID>A2C6ED70-7408-80F4-07C7-45529A398FEB</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>53FAFE33-B7A3-E62F-DF57-57C8A740C861</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="C5767C4B-3385-F013-0B28-BACE44D87471">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 16:42:18 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="apellido" id="89B3C9BF-D24E-728D-E07F-67D6BF431595">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 16:42:35 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="usuario" id="00246072-0B4A-AE96-2C82-B7799C2491F5">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 16:44:18 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="contrasena" id="7DFA0080-487C-FF5F-2910-D000E5494FB0">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 16:44:42 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 CHAR</dataTypeSize>
+<ownDataTypeParameters>200 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha" id="8ED33806-1977-3085-61AA-3B1C7EBC0F83">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 16:53:38 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="48774F51-DB09-2D46-411B-4BB256ECB28F" name="Cliente PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 16:42:14 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>34FB9C49-46A2-2F9C-6E58-551628A0CE2D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

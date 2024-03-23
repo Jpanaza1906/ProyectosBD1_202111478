@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4E08EA5B-A4F6-FBEA-D2C0-199DCDC7893F" name="Cuenta">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 15:36:19 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id-cuenta" id="12478309-7F87-F1BE-024F-7B8BDB3BA1E3">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:09:30 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="monto-apertura" id="5925A92E-D6F5-2DE8-688B-1BB038CA06E4">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:09:43 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,12,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="saldo" id="76A10CC3-6F0C-687E-F1EA-226886DA6679">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:10:11 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,12,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion" id="08296283-F14C-6A2C-6579-16B4B9EE6C86">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:10:41 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha-apertura" id="006C2542-83B7-2881-B59B-FA241BA84AF2">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:11:22 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="detalle" id="DAC5EFA9-82F0-10C4-0A1B-DF2511DAAA64">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:11:39 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id-tcuenta" id="EEAD4FFA-7D8C-D80A-203B-45C2388D97FE">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:53:41 UTC</createdTime>
+<generatorID>7CE58422-8927-D7B1-D01F-10F7EBEF6976</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>07F39592-0438-8F7B-E0F3-F8816AF243B7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D913F771-E784-727F-C66A-997928EA6654" name="Cuenta PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:09:41 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>12478309-7F87-F1BE-024F-7B8BDB3BA1E3</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

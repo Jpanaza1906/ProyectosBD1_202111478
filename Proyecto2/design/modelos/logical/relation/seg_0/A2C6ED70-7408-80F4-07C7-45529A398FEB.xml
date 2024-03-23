@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="TCLI:CLI" directorySegmentName="seg_0" id="A2C6ED70-7408-80F4-07C7-45529A398FEB">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:50:53 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<sourcePk>16091ADA-C7F9-85AA-14D6-708A2B759953</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>2B88316E-5910-85D2-D165-B6975549683D</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>4AE479B9-DCB7-ED3F-6D61-B162704E00CB</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

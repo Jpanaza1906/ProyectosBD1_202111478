@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B496BECB-83B2-D1B4-9D00-E19F62205722" name="Transaccion">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 15:37:33 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_transaccion" id="00C72AD7-0A24-0B52-B8D5-93B116365BB4">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 16:59:37 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id-cliente" id="AC2D6486-FFB4-5E9B-6F29-39AFA4BC83B7">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 18:05:59 UTC</createdTime>
+<generatorID>2FE75C8D-C52E-3FF5-A66C-AE74C45B98D1</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>34FB9C49-46A2-2F9C-6E58-551628A0CE2D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id-ttrans" id="64487E4F-FE87-6E13-2F93-2D20000EDE4C">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:56:48 UTC</createdTime>
+<generatorID>50AD868C-9A35-3F13-4CBB-05C68856D4A6</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>F31A1A98-82AF-E9CC-4B29-8161DDDEAC74</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha" id="4E41AD26-5C9D-C039-C91B-6668EB2127E2">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 16:59:57 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="detalle" id="3229CA93-B38E-3AB7-E818-CCDC218C0A48">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:00:11 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="97452ADA-2B24-95C0-C8EF-2752FC0E2826" name="Transaccion PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 16:59:56 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>00C72AD7-0A24-0B52-B8D5-93B116365BB4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

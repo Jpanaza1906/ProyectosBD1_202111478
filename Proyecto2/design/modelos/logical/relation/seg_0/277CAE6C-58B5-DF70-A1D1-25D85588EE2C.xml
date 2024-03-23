@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="TRAN:COM" directorySegmentName="seg_0" id="277CAE6C-58B5-DF70-A1D1-25D85588EE2C">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 18:20:47 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<sourcePk>97452ADA-2B24-95C0-C8EF-2752FC0E2826</sourcePk>
+<targetPk>627C5C02-089B-0478-8795-DFD67F5B95ED</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>B496BECB-83B2-D1B4-9D00-E19F62205722</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>5C194BF3-3DBC-0E8E-F749-93F43B4EB1DF</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
