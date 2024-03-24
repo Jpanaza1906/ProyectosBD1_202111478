@@ -1,0 +1,138 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="78C9D73F-8D1B-F4CC-1A44-778A35CDFEF7" name="Compra">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>5C194BF3-3DBC-0E8E-F749-93F43B4EB1DF</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id-compra" id="04377DAE-5028-A5E1-ACD4-7063123A6365">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>F55BCE5D-DB80-33E0-5BA5-22F6E1496D22</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_transaccion" id="18DFA1C4-6069-497E-233D-8FA31CFB030D">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>37E5E901-5D57-DDDE-8B4B-948AC38BB1E3</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B64525DA-D0CB-A607-D676-2E9CC6193A5B" referredColumn="3B1BC314-F5B6-B906-A543-487EEC3B307D"/>
+</associations>
+</Column>
+<Column name="id-pro-ser" id="8E4F1DDB-EC83-3FBC-9413-BBCDC2493E8F">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>782991AB-51CD-33BF-CF27-B0AAEBBD933F</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="76F56B0D-0155-12DA-8FB4-9EC44E722796" referredColumn="998D8FDD-C423-E9B6-56D3-641BF3F9F042"/>
+</associations>
+</Column>
+<Column name="fecha" id="916F2979-D317-FD12-C54F-B4A6D7D75E5A">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>B615CB0C-B4A6-3CB8-6EFB-D571488AA8C0</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="importe" id="7617C0F3-8299-8354-403B-369CCDB5D7A5">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>F646BB53-E868-0F7E-FBC8-5C4A246E9DA2</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,12,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="detalle" id="4BBE3457-61D0-687D-02AE-5F2C91CEC3FF">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>F4BEF45D-04CE-F1A3-0ED3-9D3E671BF770</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="59D98746-9A0D-5182-A4D8-7FD0411110F4" name="Compra_PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>627C5C02-089B-0478-8795-DFD67F5B95ED</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="04377DAE-5028-A5E1-ACD4-7063123A6365"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5EAF310C-425B-A438-6B93-680223D638D6" name="Compra__IDX">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>277CAE6C-58B5-DF70-A1D1-25D85588EE2C</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="18DFA1C4-6069-497E-233D-8FA31CFB030D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6C78A08A-3E35-213B-F947-82B0A5DE83D0" name="Compra_Pro-Ser_FK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>413E9EA4-D290-DA9B-112F-46494CFAA3FA</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E4F1DDB-EC83-3FBC-9413-BBCDC2493E8F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="225F3688-520B-45E7-BDE5-8DFD980D6C55" name="Compra_Transaccion_FK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>277CAE6C-58B5-DF70-A1D1-25D85588EE2C</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="18DFA1C4-6069-497E-233D-8FA31CFB030D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

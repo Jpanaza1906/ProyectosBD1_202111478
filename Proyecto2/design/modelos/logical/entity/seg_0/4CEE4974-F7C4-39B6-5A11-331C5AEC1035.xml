@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_transaccion" id="146B5BD2-11DC-DBF4-B17C-AD20B7E015D9">
+<Attribute name="id-transaccion" id="146B5BD2-11DC-DBF4-B17C-AD20B7E015D9">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 18:26:16 UTC</createdTime>
 <generatorID>40B0ECE3-2B5A-3EDC-0A0B-88214AE71B0C</generatorID>

@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B6C4DAE1-988A-13D0-F49B-69E11AC4563C" name="Pro-Ser">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>9BE6DF8C-6AEE-11CB-E22E-C9D7DCABF03A</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id-pro-ser" id="998D8FDD-C423-E9B6-56D3-641BF3F9F042">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>5F31CCB8-E2E8-BE27-D683-CCA1513F79B3</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipo" id="0690162F-C8BF-A0FA-0FF9-413DB029885B">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>49986560-15F6-839F-488D-7C7568A0A134</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="costo" id="8CB6C2DC-024D-46B8-4E72-5A499AFEABE1">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>B24A094B-1DA9-07C6-4492-77BF009F49F8</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,12,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="C74D06DE-3DFA-2257-66F4-7F871BD2FD22">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>DCE75213-6C6F-8388-200F-766B76DE8C32</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="81AA77DD-F016-234F-80A5-F4C6E85724A3" name="Pro-Ser_PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 20:41:52 UTC</createdTime>
+<generatorID>8620C5DC-107B-5116-A796-911081838F91</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="998D8FDD-C423-E9B6-56D3-641BF3F9F042"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
