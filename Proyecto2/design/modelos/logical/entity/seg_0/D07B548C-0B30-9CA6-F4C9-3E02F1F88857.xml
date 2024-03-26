@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D07B548C-0B30-9CA6-F4C9-3E02F1F88857" name="Tipo-Trans">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D07B548C-0B30-9CA6-F4C9-3E02F1F88857" name="Tipo_Trans">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 15:37:45 UTC</createdTime>
 <ownerDesignName>modelos</ownerDesignName>
@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id-ttrans" id="F31A1A98-82AF-E9CC-4B29-8161DDDEAC74">
+<Attribute name="id_ttrans" id="F31A1A98-82AF-E9CC-4B29-8161DDDEAC74">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 16:35:20 UTC</createdTime>
 <ownerDesignName>modelos</ownerDesignName>
@@ -59,8 +59,9 @@
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 16:36:00 UTC</createdTime>
 <ownerDesignName>modelos</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

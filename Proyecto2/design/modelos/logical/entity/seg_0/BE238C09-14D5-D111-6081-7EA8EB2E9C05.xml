@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id-correo" id="8A2248E7-4889-F018-B0A6-7F9F0BADD6BB">
+<Attribute name="id_correo" id="8A2248E7-4889-F018-B0A6-7F9F0BADD6BB">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 17:23:22 UTC</createdTime>
 <ownerDesignName>modelos</ownerDesignName>
@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id-cliente" id="3EBEA30B-11E4-7171-9BD1-EDFA4C12449A">
+<Attribute name="id_cliente" id="3EBEA30B-11E4-7171-9BD1-EDFA4C12449A">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 17:41:20 UTC</createdTime>
 <generatorID>72CEC896-C0F7-71A7-9768-172D3422E424</generatorID>
@@ -60,8 +60,9 @@
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 17:23:34 UTC</createdTime>
 <ownerDesignName>modelos</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

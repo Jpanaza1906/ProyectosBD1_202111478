@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id-deposito" id="6DD4AEEE-F0E6-60BE-74E7-E9A1E97DE45D">
+<Attribute name="id_deposito" id="6DD4AEEE-F0E6-60BE-74E7-E9A1E97DE45D">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 17:34:16 UTC</createdTime>
 <ownerDesignName>modelos</ownerDesignName>
@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id-transaccion" id="F1AD85F7-B062-33DB-58F9-64B0289F42B8">
+<Attribute name="id_transaccion" id="F1AD85F7-B062-33DB-58F9-64B0289F42B8">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 18:20:10 UTC</createdTime>
 <generatorID>E256B061-8E6C-CE98-618C-830DF6E7B17D</generatorID>
@@ -41,7 +41,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id-cuenta" id="C2EA5057-9E6E-5BB8-FAB8-EB9D5EF85F0B">
+<Attribute name="id_cuenta" id="C2EA5057-9E6E-5BB8-FAB8-EB9D5EF85F0B">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 18:15:57 UTC</createdTime>
 <generatorID>134C7F16-B222-6865-617B-6B9CAFC76105</generatorID>
@@ -101,8 +101,9 @@
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 17:34:29 UTC</createdTime>
 <ownerDesignName>modelos</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

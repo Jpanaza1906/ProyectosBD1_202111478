@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id-deposito" id="AC332D41-4C89-2FD0-996D-E3CD7E8A1627">
+<Column name="id_deposito" id="AC332D41-4C89-2FD0-996D-E3CD7E8A1627">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 20:41:52 UTC</createdTime>
 <generatorID>6DD4AEEE-F0E6-60BE-74E7-E9A1E97DE45D</generatorID>
@@ -34,7 +34,7 @@
 <colAssociation fkAssociation="2BE6BA4E-9BFD-4C2D-2A60-361E16DD952E" referredColumn="3B1BC314-F5B6-B906-A543-487EEC3B307D"/>
 </associations>
 </Column>
-<Column name="id-cuenta" id="4798790D-91AF-F7A1-CDB3-9B76C230D14F">
+<Column name="id_cuenta" id="4798790D-91AF-F7A1-CDB3-9B76C230D14F">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 20:41:52 UTC</createdTime>
 <generatorID>C2EA5057-9E6E-5BB8-FAB8-EB9D5EF85F0B</generatorID>
@@ -56,7 +56,7 @@
 <ownerDesignName>modelos</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

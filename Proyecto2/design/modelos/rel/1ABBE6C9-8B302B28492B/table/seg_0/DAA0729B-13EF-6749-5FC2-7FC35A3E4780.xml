@@ -19,7 +19,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id-cliente" id="3C8E07E7-A379-F0DF-F95D-F24C1597A470">
+<Column name="id_cliente" id="3C8E07E7-A379-F0DF-F95D-F24C1597A470">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 20:41:52 UTC</createdTime>
 <generatorID>AC2D6486-FFB4-5E9B-6F29-39AFA4BC83B7</generatorID>
@@ -34,7 +34,7 @@
 <colAssociation fkAssociation="17E9EB5D-C236-C7F0-ABE5-A69252A5E9A3" referredColumn="16969C95-401E-0576-ED38-31957F673991"/>
 </associations>
 </Column>
-<Column name="id-ttrans" id="429C48DD-112B-5593-466A-0A8A3516FB10">
+<Column name="id_ttrans" id="429C48DD-112B-5593-466A-0A8A3516FB10">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 20:41:52 UTC</createdTime>
 <generatorID>64487E4F-FE87-6E13-2F93-2D20000EDE4C</generatorID>
@@ -56,7 +56,7 @@
 <ownerDesignName>modelos</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

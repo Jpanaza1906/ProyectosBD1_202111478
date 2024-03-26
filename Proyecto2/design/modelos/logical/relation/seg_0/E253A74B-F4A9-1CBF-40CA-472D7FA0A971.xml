@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CLI:CUE" directorySegmentName="seg_0" id="E253A74B-F4A9-1CBF-40CA-472D7FA0A971">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-25 19:29:48 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<sourcePk>48774F51-DB09-2D46-411B-4BB256ECB28F</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>4AE479B9-DCB7-ED3F-6D61-B162704E00CB</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>4E08EA5B-A4F6-FBEA-D2C0-199DCDC7893F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

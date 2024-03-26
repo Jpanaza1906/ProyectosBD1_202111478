@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A5B5025B-5ABC-1994-6602-03A5D4E7BAD4" name="Tipo-Cuenta">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A5B5025B-5ABC-1994-6602-03A5D4E7BAD4" name="Tipo_Cuenta">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 15:36:24 UTC</createdTime>
 <ownerDesignName>modelos</ownerDesignName>
@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id-tcuenta" id="07F39592-0438-8F7B-E0F3-F8816AF243B7">
+<Attribute name="id_tcuenta" id="07F39592-0438-8F7B-E0F3-F8816AF243B7">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 16:38:29 UTC</createdTime>
 <ownerDesignName>modelos</ownerDesignName>
@@ -59,8 +59,9 @@
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 16:38:43 UTC</createdTime>
 <ownerDesignName>modelos</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

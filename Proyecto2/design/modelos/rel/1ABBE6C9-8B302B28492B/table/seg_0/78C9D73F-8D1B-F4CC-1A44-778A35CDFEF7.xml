@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id-compra" id="04377DAE-5028-A5E1-ACD4-7063123A6365">
+<Column name="id_compra" id="04377DAE-5028-A5E1-ACD4-7063123A6365">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 20:41:52 UTC</createdTime>
 <generatorID>F55BCE5D-DB80-33E0-5BA5-22F6E1496D22</generatorID>
@@ -34,7 +34,7 @@
 <colAssociation fkAssociation="B64525DA-D0CB-A607-D676-2E9CC6193A5B" referredColumn="3B1BC314-F5B6-B906-A543-487EEC3B307D"/>
 </associations>
 </Column>
-<Column name="id-pro-ser" id="8E4F1DDB-EC83-3FBC-9413-BBCDC2493E8F">
+<Column name="id_pro_ser" id="8E4F1DDB-EC83-3FBC-9413-BBCDC2493E8F">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 20:41:52 UTC</createdTime>
 <generatorID>782991AB-51CD-33BF-CF27-B0AAEBBD933F</generatorID>
@@ -56,7 +56,7 @@
 <ownerDesignName>modelos</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>

@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BC6C9AFF-C1E3-4F6D-D03E-9C596070546B" name="Tipo-Trans">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BC6C9AFF-C1E3-4F6D-D03E-9C596070546B" name="Tipo_Trans">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 20:41:52 UTC</createdTime>
 <generatorID>D07B548C-0B30-9CA6-F4C9-3E02F1F88857</generatorID>
@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id-ttrans" id="F6CD648D-0579-34BD-4E7A-D54D8DA1B0C4">
+<Column name="id_ttrans" id="F6CD648D-0579-34BD-4E7A-D54D8DA1B0C4">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 20:41:52 UTC</createdTime>
 <generatorID>F31A1A98-82AF-E9CC-4B29-8161DDDEAC74</generatorID>
