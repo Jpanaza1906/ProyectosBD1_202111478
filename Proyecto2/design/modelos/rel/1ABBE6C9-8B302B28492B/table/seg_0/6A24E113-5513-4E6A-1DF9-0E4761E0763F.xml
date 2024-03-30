@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6A24E113-5513-4E6A-1DF9-0E4761E0763F" name="Correo">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>BE238C09-14D5-D111-6081-7EA8EB2E9C05</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_correo" id="42AB7244-A21B-5F0F-EEFC-2078AA41685E">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>8A2248E7-4889-F018-B0A6-7F9F0BADD6BB</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="direccion" id="1B3A8D18-DF21-C537-61C8-F28264B30579">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>D78ECD80-2D5D-29BB-6DB1-860182D578EC</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_cliente" id="7C44DA66-5FAC-3F97-CCD6-767511622010">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>3EBEA30B-11E4-7171-9BD1-EDFA4C12449A</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="078B3D51-B85F-436B-E9BA-AE816398153A" referredColumn="6DBB3BDB-B4A5-505E-9E27-35237B038A9A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4D931746-BB0C-535A-F89B-13D3894CBC9A" name="Correo_PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>4DA16F9F-67EA-A8B0-E475-45E06BDD21C4</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="42AB7244-A21B-5F0F-EEFC-2078AA41685E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="024E5DAF-05D1-23F0-C4B7-053FA40A79DE" name="Correo_Cliente_FK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>72CEC896-C0F7-71A7-9768-172D3422E424</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7C44DA66-5FAC-3F97-CCD6-767511622010"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

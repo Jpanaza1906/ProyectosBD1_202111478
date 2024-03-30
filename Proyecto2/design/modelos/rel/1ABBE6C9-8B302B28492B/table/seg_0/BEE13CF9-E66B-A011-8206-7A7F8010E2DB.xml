@@ -1,0 +1,122 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BEE13CF9-E66B-A011-8206-7A7F8010E2DB" name="Cliente">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>4AE479B9-DCB7-ED3F-6D61-B162704E00CB</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_cliente" id="6DBB3BDB-B4A5-505E-9E27-35237B038A9A">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>34FB9C49-46A2-2F9C-6E58-551628A0CE2D</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="906CABD4-BDB9-F068-D931-57FD5A46576A">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>C5767C4B-3385-F013-0B28-BACE44D87471</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellido" id="0F0EA947-309D-E077-4103-2AF9834C66BA">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>89B3C9BF-D24E-728D-E07F-67D6BF431595</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="usuario" id="3A89426C-BB5F-7399-CE5D-40FAEE0DBE61">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>00246072-0B4A-AE96-2C82-B7799C2491F5</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="contrasena" id="2A5C189D-09EC-D313-D285-F048C7A28AE7">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>7DFA0080-487C-FF5F-2910-D000E5494FB0</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 CHAR</dataTypeSize>
+<ownDataTypeParameters>200 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha" id="4E18C735-7580-3E73-E6B3-3822AFB818F1">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>8ED33806-1977-3085-61AA-3B1C7EBC0F83</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_tcliente" id="11221B09-BEFD-054A-0D6E-11001BCEDB63">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>D754FEF8-3BD3-F335-F22D-44C27CD4F2B6</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6C065690-452F-89D0-66FE-143FD87EB0D3" referredColumn="51F6139D-F210-2D4B-B0EB-0FF2FC9DCDEA"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="01B81850-DF12-EE7D-E94D-FF0A6BE1EC40" name="Cliente_PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>48774F51-DB09-2D46-411B-4BB256ECB28F</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6DBB3BDB-B4A5-505E-9E27-35237B038A9A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5F149648-22A6-A520-C3C5-17F2461237A7" name="Cliente_Tipo_Cliente_FK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>A2C6ED70-7408-80F4-07C7-45529A398FEB</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="11221B09-BEFD-054A-0D6E-11001BCEDB63"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

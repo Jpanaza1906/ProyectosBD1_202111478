@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="543C6C94-68ED-7C97-E5EB-E21F8F6AA943" name="Tipo_Cuenta">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>A5B5025B-5ABC-1994-6602-03A5D4E7BAD4</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_tcuenta" id="AC8D11D1-357D-A76A-F363-4DF4E80FA00E">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>07F39592-0438-8F7B-E0F3-F8816AF243B7</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="77036412-FAB0-28DD-A842-D2594E56234A">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>5F849660-BDFB-19F8-C857-986AB594F773</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="43C3B321-214E-809B-14B6-219264B5061F">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>D9419489-80F8-0D6B-6117-B805034532DB</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="046D064A-67E2-8211-C957-7A4F5C898A33" name="Tipo_Cuenta_PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>B452A0C6-618F-6EC8-AE3D-2E7DC01304A8</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AC8D11D1-357D-A76A-F363-4DF4E80FA00E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

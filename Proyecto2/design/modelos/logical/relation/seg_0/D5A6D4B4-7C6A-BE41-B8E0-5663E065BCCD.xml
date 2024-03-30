@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="DEP:TRAN" directorySegmentName="seg_0" id="D5A6D4B4-7C6A-BE41-B8E0-5663E065BCCD">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:24:15 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<sourcePk>0949C5FD-CA3F-6C8A-1FEF-4FBF4D515007</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>35D8822D-E0EE-75DD-B459-307D6AB62840</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>B496BECB-83B2-D1B4-9D00-E19F62205722</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

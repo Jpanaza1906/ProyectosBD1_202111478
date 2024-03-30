@@ -27,34 +27,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_transaccion" id="F1AD85F7-B062-33DB-58F9-64B0289F42B8">
-<createdBy>josep</createdBy>
-<createdTime>2024-03-23 18:20:10 UTC</createdTime>
-<generatorID>E256B061-8E6C-CE98-618C-830DF6E7B17D</generatorID>
-<ownerDesignName>modelos</ownerDesignName>
-<engineerTo>
-<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
-</engineerTo>
-<referedAttribute>00C72AD7-0A24-0B52-B8D5-93B116365BB4</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_cuenta" id="C2EA5057-9E6E-5BB8-FAB8-EB9D5EF85F0B">
-<createdBy>josep</createdBy>
-<createdTime>2024-03-23 18:15:57 UTC</createdTime>
-<generatorID>134C7F16-B222-6865-617B-6B9CAFC76105</generatorID>
-<ownerDesignName>modelos</ownerDesignName>
-<engineerTo>
-<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
-</engineerTo>
-<referedAttribute>12478309-7F87-F1BE-024F-7B8BDB3BA1E3</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="fecha" id="0355FCDF-FF6E-4929-26DB-24726D30261D">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 17:34:31 UTC</createdTime>
@@ -94,6 +66,20 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>40 CHAR</dataTypeSize>
 <ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_cliente" id="2DBF3016-4545-21BC-A7E9-AAB1BFE88738">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:22:07 UTC</createdTime>
+<generatorID>941F814D-46EA-0BCC-5B82-360EF1F85E0E</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>34FB9C49-46A2-2F9C-6E58-551628A0CE2D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

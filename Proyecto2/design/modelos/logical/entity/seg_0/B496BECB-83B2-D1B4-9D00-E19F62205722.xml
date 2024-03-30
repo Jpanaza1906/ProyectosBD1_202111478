@@ -27,34 +27,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_cliente" id="AC2D6486-FFB4-5E9B-6F29-39AFA4BC83B7">
-<createdBy>josep</createdBy>
-<createdTime>2024-03-23 18:05:59 UTC</createdTime>
-<generatorID>2FE75C8D-C52E-3FF5-A66C-AE74C45B98D1</generatorID>
-<ownerDesignName>modelos</ownerDesignName>
-<engineerTo>
-<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
-</engineerTo>
-<referedAttribute>34FB9C49-46A2-2F9C-6E58-551628A0CE2D</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_ttrans" id="64487E4F-FE87-6E13-2F93-2D20000EDE4C">
-<createdBy>josep</createdBy>
-<createdTime>2024-03-23 17:56:48 UTC</createdTime>
-<generatorID>50AD868C-9A35-3F13-4CBB-05C68856D4A6</generatorID>
-<ownerDesignName>modelos</ownerDesignName>
-<engineerTo>
-<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
-</engineerTo>
-<referedAttribute>F31A1A98-82AF-E9CC-4B29-8161DDDEAC74</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="fecha" id="4E41AD26-5C9D-C039-C91B-6668EB2127E2">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 16:59:57 UTC</createdTime>
@@ -80,6 +52,76 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>40 CHAR</dataTypeSize>
 <ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_ttrans" id="64487E4F-FE87-6E13-2F93-2D20000EDE4C">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-23 17:56:48 UTC</createdTime>
+<generatorID>50AD868C-9A35-3F13-4CBB-05C68856D4A6</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>F31A1A98-82AF-E9CC-4B29-8161DDDEAC74</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_deposito" id="FA501219-6E07-7821-BBB5-F51BD79FCD3F">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:24:15 UTC</createdTime>
+<generatorID>D5A6D4B4-7C6A-BE41-B8E0-5663E065BCCD</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>6DD4AEEE-F0E6-60BE-74E7-E9A1E97DE45D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_debito" id="EDA746E2-A235-44BA-4232-BD583B1D6A8B">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:24:49 UTC</createdTime>
+<generatorID>1F6CD45A-7355-B346-3143-D5BA96A258E5</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>43B8CC24-7C4E-E850-C409-327588BB2E75</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_compra" id="7AF042FB-3EA9-BB5C-2AEE-ABB27D46466F">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:24:59 UTC</createdTime>
+<generatorID>0BD5E4B6-275C-D964-F84F-6900AEC716BA</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>F55BCE5D-DB80-33E0-5BA5-22F6E1496D22</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_cuenta" id="00C5D3EB-EB33-DDBF-6F3B-0910EB7E7E8E">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:28:35 UTC</createdTime>
+<generatorID>FA40BC9A-BBE3-E624-6784-C85C9241D14B</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>12478309-7F87-F1BE-024F-7B8BDB3BA1E3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

@@ -1,0 +1,224 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B1A119B7-3D65-6DB2-FC5F-338C038BBBEF" name="Transaccion">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>B496BECB-83B2-D1B4-9D00-E19F62205722</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_transaccion" id="171FF491-9455-661E-C688-1EE8C3B9217B">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>00C72AD7-0A24-0B52-B8D5-93B116365BB4</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha" id="45FBB8DC-E90F-605F-3588-A36FACE228F4">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>4E41AD26-5C9D-C039-C91B-6668EB2127E2</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="detalle" id="D6875DB8-9092-E2C0-A0B8-02696CBF3F10">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>3229CA93-B38E-3AB7-E818-CCDC218C0A48</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_ttrans" id="B18F1DC3-60E5-54FB-EA70-17153CDEECBA">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>64487E4F-FE87-6E13-2F93-2D20000EDE4C</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6F852564-CC0A-4374-6F3E-9ED8D5644F27" referredColumn="AB3CF839-3B32-B466-B65C-435C942AFA60"/>
+</associations>
+</Column>
+<Column name="id_deposito" id="3FC3CF5D-30F2-323E-2F08-B34882325616">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>FA501219-6E07-7821-BBB5-F51BD79FCD3F</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FBC1B784-08B1-7451-2D77-9973F78A8C70" referredColumn="89D3EF34-EC4C-898D-685B-F1451FB28F11"/>
+</associations>
+</Column>
+<Column name="id_debito" id="655FDE0B-D3D7-5F16-7578-7D10440FB902">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>EDA746E2-A235-44BA-4232-BD583B1D6A8B</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1AF1EE66-F843-680A-5561-87DED7770F87" referredColumn="60CC13C4-227F-0AD9-650A-EACCCEB78301"/>
+</associations>
+</Column>
+<Column name="id_compra" id="0557EEB1-181A-972C-4189-37A7860F5388">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>7AF042FB-3EA9-BB5C-2AEE-ABB27D46466F</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2BFDB7F4-AA06-5E1D-8CDA-E09BEE9594F3" referredColumn="257BB02D-F886-00C1-9951-29037143901A"/>
+</associations>
+</Column>
+<Column name="id_cuenta" id="B5B2AC61-700E-4EEA-497C-20F30A2B576C">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>00C5D3EB-EB33-DDBF-6F3B-0910EB7E7E8E</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6E96910D-701B-8110-531D-CD5B845EDF13" referredColumn="A2599ED8-7A52-F77B-0296-80DB31754CF6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="ACACA1C9-3F0D-3F91-BFEF-5EE9D7477518" name="Transaccion_PK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>97452ADA-2B24-95C0-C8EF-2752FC0E2826</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="171FF491-9455-661E-C688-1EE8C3B9217B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ADC11353-F5B0-91E9-CF59-D75DC739E87A" name="Transaccion__IDX">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>0BD5E4B6-275C-D964-F84F-6900AEC716BA</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="0557EEB1-181A-972C-4189-37A7860F5388"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5C987638-BFB6-57F4-776B-3D4B91FA2650" name="Transaccion__IDXv1">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>1F6CD45A-7355-B346-3143-D5BA96A258E5</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="655FDE0B-D3D7-5F16-7578-7D10440FB902"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9CC42883-91F0-A621-6D0C-5063774746B5" name="Transaccion__IDXv2">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>D5A6D4B4-7C6A-BE41-B8E0-5663E065BCCD</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="3FC3CF5D-30F2-323E-2F08-B34882325616"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="38D7B87D-1CC6-5682-7B9C-3E4ECF419B50" name="Transaccion_Compra_FK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>0BD5E4B6-275C-D964-F84F-6900AEC716BA</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0557EEB1-181A-972C-4189-37A7860F5388"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="749E7372-88F5-7498-69C6-4339E2C8283E" name="Transaccion_Cuenta_FK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>FA40BC9A-BBE3-E624-6784-C85C9241D14B</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B5B2AC61-700E-4EEA-497C-20F30A2B576C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="31E3AE89-5EAC-BA8A-1F9F-B0DAF79FF5B1" name="Transaccion_Debito_FK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>1F6CD45A-7355-B346-3143-D5BA96A258E5</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="655FDE0B-D3D7-5F16-7578-7D10440FB902"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="84E33953-73AA-1A11-4685-C553490FD5E4" name="Transaccion_Deposito_FK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>D5A6D4B4-7C6A-BE41-B8E0-5663E065BCCD</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3FC3CF5D-30F2-323E-2F08-B34882325616"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="082EC714-3377-4B79-8E78-08395DC558F5" name="Transaccion_Tipo_Trans_FK">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:36:15 UTC</createdTime>
+<generatorID>50AD868C-9A35-3F13-4CBB-05C68856D4A6</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B18F1DC3-60E5-54FB-EA70-17153CDEECBA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

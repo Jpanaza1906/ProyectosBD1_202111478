@@ -27,20 +27,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_transaccion" id="37E5E901-5D57-DDDE-8B4B-948AC38BB1E3">
-<createdBy>josep</createdBy>
-<createdTime>2024-03-23 18:20:47 UTC</createdTime>
-<generatorID>277CAE6C-58B5-DF70-A1D1-25D85588EE2C</generatorID>
-<ownerDesignName>modelos</ownerDesignName>
-<engineerTo>
-<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
-</engineerTo>
-<referedAttribute>00C72AD7-0A24-0B52-B8D5-93B116365BB4</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="id_pro_ser" id="782991AB-51CD-33BF-CF27-B0AAEBBD933F">
 <createdBy>josep</createdBy>
 <createdTime>2024-03-23 17:58:51 UTC</createdTime>
@@ -95,6 +81,20 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>40 CHAR</dataTypeSize>
 <ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_cliente" id="8F51986B-905F-246E-A6E2-C7E7393F371A">
+<createdBy>josep</createdBy>
+<createdTime>2024-03-29 15:21:58 UTC</createdTime>
+<generatorID>22ED05D8-CFED-38C2-86FD-0F14D831062F</generatorID>
+<ownerDesignName>modelos</ownerDesignName>
+<engineerTo>
+<item key="1ABBE6C9-5D5B-5503-0BAD-8B302B28492B" value="true"/>
+</engineerTo>
+<referedAttribute>34FB9C49-46A2-2F9C-6E58-551628A0CE2D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
