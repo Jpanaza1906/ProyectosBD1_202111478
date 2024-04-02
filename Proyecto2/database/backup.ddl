@@ -756,10 +756,20 @@ create PROCEDURE registrarTipoCliente(
     p_descripcion IN VARCHAR2
 ) AS
 BEGIN
+    --Verificar que no vengan null
+    IF p_nombre IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'El nombre es un campo obligatorio.');
+        RETURN;
+    end if;
+    
+    IF p_descripcion IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'La descripcion es un campo obligatorio.');
+        RETURN;
+    end if;
+    
     --Insertar el tipo de cliente
     INSERT INTO TIPO_CLIENTE (NOMBRE, DESCRIPCION)
     VALUES (p_nombre, p_descripcion);
-
     COMMIT;
 
     DBMS_OUTPUT.PUT_LINE('Tipo de cliente registrado correctamente.');
@@ -776,6 +786,16 @@ create PROCEDURE registrarTipoCuenta(
     p_descripcion IN VARCHAR2
 ) AS
 BEGIN
+    IF p_nombre IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'El nombre es un campo obligatorio.');
+        RETURN;
+    end if;
+
+    IF p_descripcion IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'La descripcion es un campo obligatorio.');
+        RETURN;
+    end if;
+
     --Insertar el tipo de cliente
     INSERT INTO TIPO_CUENTA (NOMBRE, DESCRIPCION)
     VALUES (p_nombre, p_descripcion);
@@ -796,6 +816,16 @@ create PROCEDURE registrarTipoTransaccion(
     p_descripcion IN VARCHAR2
 ) AS
 BEGIN
+    IF p_nombre IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'El nombre es un campo obligatorio.');
+        RETURN;
+    end if;
+
+    IF p_descripcion IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'La descripcion es un campo obligatorio.');
+        RETURN;
+    end if;
+    
     --Insertar el tipo de cliente
     INSERT INTO TIPO_TRANS (NOMBRE, DESCRIPCION)
     VALUES (p_nombre, p_descripcion);
@@ -856,11 +886,42 @@ BEGIN
 
     IF v_tipo_cliente_exists = 0 THEN
         RAISE_APPLICATION_ERROR(-20001, 'El tipo de cliente no existe.');
+        RETURN;
+    end if;
+
+    --VERIFICAR QUE LOS CAMPOS NO VENGAN NULL
+    IF p_nombre IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El nombre es un campo obligatorio');
+        RETURN;
+    end if;
+
+    IF p_apellido IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El apellido es un campo obligatorio');
+        RETURN;
+    end if;
+
+    IF p_telefonos IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El/Los numero(s) de telefono es/son obligatorio(s).');
+        RETURN;
+    end if;
+
+    IF p_correos IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El/Los correo(s) es/son obligatorio(s).');
+        RETURN;
+    end if;
+
+    IF p_usuario IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El nombre de usuario es obligatorio.');
+        RETURN;
+    end if;
+
+    IF p_contrasena IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'La contrasena es obligatoria.');
     end if;
 
     -- Separa los numeros y correos
     v_telefonos_arr := SPLIT_STRING(p_telefonos, '-');
-    v_correos_arr := SPLIT_STRING(p_correos, '-');
+    v_correos_arr := SPLIT_STRING(p_correos, '|');
 
     -- Insertar el cliente
     INSERT INTO CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO, USUARIO, CONTRASENA, ID_TCLIENTE)
@@ -892,13 +953,15 @@ create PROCEDURE registrarCuenta(
     p_id_cuenta IN NUMBER,
     p_monto_apertura IN NUMBER,
     p_saldo IN NUMBER,
-    p_descripcion IN VARCHAR2,    
+    p_descripcion IN VARCHAR2,
+    p_fecha_apertura IN VARCHAR2,
     p_detalle IN VARCHAR2,
     p_id_tcuenta IN NUMBER,
     p_id_cliente IN NUMBER
 ) AS
     v_tipo_cuenta_exists NUMBER;
     v_id_cliente_exists NUMBER;
+    v_fecha_apertura DATE;
     v_detalle VARCHAR2(100);
 BEGIN
      -- Verificar si el tipo de cliente existe
@@ -908,6 +971,7 @@ BEGIN
 
     IF v_tipo_cuenta_exists = 0 THEN
         RAISE_APPLICATION_ERROR(-20001, 'El tipo de cuenta no existe.');
+        RETURN;
     end if;
 
     SELECT COUNT(*) INTO v_id_cliente_exists
@@ -916,6 +980,29 @@ BEGIN
 
     IF v_id_cliente_exists = 0 THEN
         RAISE_APPLICATION_ERROR(-20001, 'El id del cliente no existe.');
+        RETURN;
+    end if;
+
+    IF p_monto_apertura != p_saldo THEN
+        RAISE_APPLICATION_ERROR(-20001,'El saldo inicial debe ser igual al monto de apertura.');
+        RETURN;
+    end if;
+     
+    IF p_descripcion IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'La descripcion es obligatoria.');
+        RETURN;
+    end if;
+
+    IF p_fecha_apertura IS NULL THEN
+        v_fecha_apertura := SYSDATE;
+    ELSE
+        BEGIN
+            v_fecha_apertura := TO_DATE(p_fecha_apertura, 'DD/MM/YYYY HH24:MI:SS');
+        EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha final no tiene el formato correcto.');
+            RETURN;
+        end;
     end if;
     
     IF p_detalle = '' THEN
@@ -925,8 +1012,8 @@ BEGIN
     end if;
      
     --InserTar la cuenta
-    INSERT INTO CUENTA (ID_CUENTA, MONTO_APERTURA, SALDO, DESCRIPCION, DETALLE, ID_TCUENTA, ID_CLIENTE)
-    VALUES (p_id_cuenta, p_monto_apertura, p_saldo, p_descripcion, v_detalle, p_id_tcuenta, p_id_cliente);
+    INSERT INTO CUENTA (ID_CUENTA, MONTO_APERTURA, SALDO, DESCRIPCION, FECHA_APERTURA ,DETALLE, ID_TCUENTA, ID_CLIENTE)
+    VALUES (p_id_cuenta, p_monto_apertura, p_saldo, p_descripcion, v_fecha_apertura ,v_detalle, p_id_tcuenta, p_id_cliente);
 
     COMMIT;
 
@@ -980,13 +1067,25 @@ create PROCEDURE asignarTransaccion(
     v_id_accion_exist NUMBER;
     v_id_cuenta_exist NUMBER;
     v_id_cliente_accion NUMBER;
+    v_id_pro_ser NUMBER;
     v_monto_accion NUMBER;
     v_id_cliente_cuenta NUMBER;
     v_saldo_cuenta NUMBER;
     v_detalle VARCHAR2(40);
 BEGIN
     --Convertir la cadena de fecha a tipo fecha
-    v_fecha := TO_DATE(p_fecha_str,'DD/MM/YYYY');
+    IF p_fecha_str IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: La fecha es un campo obligatorio.');
+        RETURN;
+    end if;
+
+    BEGIN
+        v_fecha := TO_DATE(p_fecha_str,'DD/MM/YYYY');
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha no tiene el formato correcto.');
+            RETURN;
+    END;
 
     --Verificar el campo opcional de detalle
     IF p_detalle = '' THEN
@@ -1002,6 +1101,7 @@ BEGIN
 
     IF v_id_ttrans_exist = 0 THEN
         RAISE_APPLICATION_ERROR(-20001, 'El tipo de transaccion no existe.');
+        RETURN;
     end if;
 
     -- CON EL TIPO DE TRANSACCION VERIFICAR SI EXISTE EL ID_ACCION
@@ -1010,42 +1110,80 @@ BEGIN
     -- 3 DEBITO
 
     IF p_id_ttrans = 1 THEN
-        SELECT COUNT(*),ID_CLIENTE, IMPORTE INTO v_id_accion_exist,v_id_cliente_accion, v_monto_accion
+        SELECT COUNT(*)INTO v_id_accion_exist
+        FROM COMPRA
+        WHERE ID_COMPRA = p_id_accion;
+        
+        IF v_id_accion_exist = 0 THEN
+            RAISE_APPLICATION_ERROR(-20001, 'El ID de la accion realizada no existe.');
+            RETURN;
+        end if;
+        
+        SELECT ID_CLIENTE, IMPORTE, ID_PRO_SER INTO v_id_cliente_accion, v_monto_accion, v_id_pro_ser
         FROM COMPRA
         WHERE ID_COMPRA = p_id_accion
-        GROUP BY ID_CLIENTE,IMPORTE;
+        GROUP BY ID_CLIENTE,IMPORTE, ID_PRO_SER;
+        
     ELSIF p_id_ttrans = 2 THEN
+        SELECT COUNT(*) INTO v_id_accion_exist
+        FROM DEPOSITO
+        WHERE ID_DEPOSITO = p_id_accion;
+        
+        IF v_id_accion_exist = 0 THEN
+            RAISE_APPLICATION_ERROR(-20001, 'El ID de la accion realizada no existe.');
+            RETURN;
+        end if;
+        
         SELECT COUNT(*), ID_CLIENTE, MONTO INTO v_id_accion_exist, v_id_cliente_accion, v_monto_accion
         FROM DEPOSITO
         WHERE ID_DEPOSITO = p_id_accion
         GROUP BY ID_CLIENTE, MONTO;
     ELSIF p_id_ttrans = 3 THEN
+        SELECT COUNT(*) INTO v_id_accion_exist
+        FROM DEBITO
+        WHERE ID_DEBITO = p_id_accion;
+        
+        IF v_id_accion_exist = 0 THEN
+            RAISE_APPLICATION_ERROR(-20001, 'El ID de la accion realizada no existe.');
+            RETURN;
+        end if;
+        
         SELECT COUNT(*), ID_CLIENTE, MONTO INTO v_id_accion_exist, v_id_cliente_accion,v_monto_accion
         FROM DEBITO
         WHERE ID_DEBITO = p_id_accion
         GROUP BY ID_CLIENTE,MONTO;
     end if;
-
-    IF v_id_accion_exist = 0 THEN
-        RAISE_APPLICATION_ERROR(-20001, 'El ID de la accion realizada no existe.');
+    
+    IF v_monto_accion IS NULL AND p_id_ttrans = 1 THEN
+        SELECT COSTO INTO v_monto_accion
+        FROM PRO_SER
+        WHERE ID_PRO_SER = v_id_pro_ser;
     end if;
 
-    SELECT COUNT(*), ID_CLIENTE, SALDO INTO v_id_cuenta_exist, v_id_cliente_cuenta, v_saldo_cuenta
+    SELECT COUNT(*) INTO v_id_cuenta_exist
+    FROM CUENTA
+    WHERE ID_CUENTA = p_id_cuenta;
+
+    IF v_id_cuenta_exist = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El numero de cuenta no existe.');
+        RETURN;
+    end if;
+    
+    SELECT ID_CLIENTE, SALDO INTO v_id_cliente_cuenta, v_saldo_cuenta
     FROM CUENTA
     WHERE ID_CUENTA = p_id_cuenta
     GROUP BY ID_CLIENTE, SALDO;
 
-    IF v_id_cuenta_exist = 0 THEN
-        RAISE_APPLICATION_ERROR(-20001, 'El numero de cuenta no existe.');
-    end if;
 
     IF v_id_cliente_cuenta != v_id_cliente_accion THEN
         RAISE_APPLICATION_ERROR(-20001, 'La cuenta no corresponde al cliente que hizo la accion.');
+        RETURN;
     end if;
 
     IF p_id_ttrans != 2 THEN
         IF v_saldo_cuenta < v_monto_accion THEN
             RAISE_APPLICATION_ERROR(-20001, 'El saldo de la cuenta no es suficiente para completar la transaccion.');
+            RETURN;
         end if;
 
         UPDATE CUENTA
@@ -1090,8 +1228,19 @@ create PROCEDURE realizarDeposito(
     v_id_cliente_exist NUMBER;
     v_detalle VARCHAR2(40);
 BEGIN
-    --Convertir la cadena de fecha a una fecha
-    v_fecha := TO_DATE(p_fecha_str, 'DD/MM/YYYY');
+    IF p_fecha_str IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: La fecha es un parametro obligatorio.');
+        RETURN;
+    end if;
+    
+    BEGIN
+        --Convertir la cadena de fecha a fecha
+        v_fecha := TO_DATE(p_fecha_str, 'DD/MM/YYYY');
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha no tiene el formato correcto.');
+            RETURN;
+    end;
     
     -- Verificar el campo opcional de Detalle
     IF p_detalle = '' THEN
@@ -1107,11 +1256,13 @@ BEGIN
 
     IF v_id_cliente_exist = 0 THEN
         RAISE_APPLICATION_ERROR(-20001, 'El id_cliente no existe.');
+        RETURN;
     end if;
 
     -- Verificar que el monto sea positivo
     IF p_monto <= 0 THEN
         RAISE_APPLICATION_ERROR(-20001, 'El monto del deposito debe ser mayor a 0.');
+        RETURN;
     end if;
 
     --Insertar los valores en deposito
@@ -1138,8 +1289,19 @@ create PROCEDURE realizarDebito(
     v_id_cliente_exist NUMBER;
     v_detalle VARCHAR2(40);
 BEGIN
-    --Convertir la cadena de fecha a tipo fecha
-    v_fecha := TO_DATE(p_fecha_str, 'DD/MM/YYYY');
+    IF p_fecha_str IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: La fecha es un parametro obligatorio.');
+        RETURN;
+    end if;
+    
+    BEGIN
+        --Convertir la cadena de fecha a fecha
+        v_fecha := TO_DATE(p_fecha_str, 'DD/MM/YYYY');
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha no tiene el formato correcto.');
+            RETURN;
+    end;
 
     --Verificar el campo opcional de detalle
     
@@ -1156,11 +1318,13 @@ BEGIN
 
     IF v_id_cliente_exist = 0 THEN
         RAISE_APPLICATION_ERROR(-20001, 'La id de cliente no existe.');
+        RETURN;
     end if;
 
     -- Verificar que el monto sea mayor a 0
      IF p_monto <= 0 THEN
          RAISE_APPLICATION_ERROR(-20001, 'El monto debe ser mayor a 0.');
+         RETURN;
      end if;
 
         -- Insertar el debito
@@ -1191,8 +1355,19 @@ create PROCEDURE realizarCompra(
     v_importe NUMBER;
     v_detalle VARCHAR2(40);
 BEGIN
-    --Convertir la cadena de fecha a fecha
-    v_fecha := TO_DATE(p_fecha_str, 'DD/MM/YYYY');
+    IF p_fecha_str IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: La fecha es un parametro obligatorio.');
+        RETURN;
+    end if;
+    
+    BEGIN
+        --Convertir la cadena de fecha a fecha
+        v_fecha := TO_DATE(p_fecha_str, 'DD/MM/YYYY');
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha no tiene el formato correcto.');
+            RETURN;
+    end;
     
     --Verificar el dato opcional de importe
     IF p_importe = 0 THEN
@@ -1217,6 +1392,7 @@ BEGIN
 
     IF v_id_cliente_exist = 0 THEN
         RAISE_APPLICATION_ERROR(-20001, 'El id_cliente no existe.');
+        RETURN;
     end if;
 
     -- Verificar que exista el id_pro_ser
@@ -1226,6 +1402,7 @@ BEGIN
 
     IF v_id_pro_ser_exist = 0 THEN
         RAISE_APPLICATION_ERROR(-20001, 'El id de producto o servicio no existe.');
+        RETURN;
     end if;
 
     SELECT TIPO INTO v_tipo_pro_ser
@@ -1233,12 +1410,14 @@ BEGIN
     WHERE ID_PRO_SER = p_id_pro_ser;
 
     --Si es un producto(2) no debe ser nulo
-    IF v_tipo_pro_ser = 2 AND (v_importe IS NULL OR v_importe < 0) THEN
+    IF v_tipo_pro_ser = 2 AND (v_importe IS NULL OR v_importe <= 0) THEN
         raise_application_error(-20001, 'El importe es obligatorio para un producto y debe ser mayor a 0.');
+        RETURN;
     end if;
 
     IF v_tipo_pro_ser = 1 AND v_importe IS NOT NULL THEN
         RAISE_APPLICATION_ERROR(-20001, 'El importe debe ser nulo para un servicio.');
+        RETURN;
     end if;
 
     -- Insertar en la tabla
@@ -1253,5 +1432,469 @@ EXCEPTION
         ROLLBACK;
 
 end;
+/
+
+create PROCEDURE consultarSaldoCliente(
+    p_no_cuenta IN NUMBER
+) AS
+    v_nombre_cliente VARCHAR2(40);
+    v_id_cliente NUMBER;
+    v_tipo_cliente VARCHAR2(40);
+    v_tipo_cuenta VARCHAR2(40);
+    v_saldo_cuenta NUMBER;
+    v_saldo_apertura NUMBER;
+    v_cta_exist NUMBER;
+BEGIN
+    SELECT COUNT(*) INTO v_cta_exist
+    FROM CUENTA
+    WHERE ID_CUENTA = p_no_cuenta;
+    
+    IF v_cta_exist = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Error: No se encontro la cuenta con el No. Cuenta');
+        RETURN;
+    end if;
+    
+    -- Obtener el nombre del cliente
+    SELECT cli.ID_CLIENTE, cli.NOMBRE INTO v_id_cliente,v_nombre_cliente
+    FROM CLIENTE cli
+    JOIN CUENTA cta ON cli.ID_CLIENTE = cta.ID_CLIENTE
+    WHERE cta.ID_CUENTA = p_no_cuenta;
+
+    --Obtener el tipo de cliente
+    SELECT tcli.NOMBRE INTO v_tipo_cliente
+    FROM CLIENTE cli
+    JOIN TIPO_CLIENTE tcli ON cli.ID_TCLIENTE = tcli.ID_TCLIENTE
+    WHERE cli.ID_CLIENTE = v_id_cliente;
+
+    --Obtener el tipo de cuenta
+    SELECT tcta.NOMBRE INTO v_tipo_cuenta
+    FROM TIPO_CUENTA tcta
+    JOIN CUENTA cta ON tcta.ID_TCUENTA = cta.ID_TCUENTA
+    WHERE cta.ID_CUENTA = p_no_cuenta;
+
+    --Obtener el saldo de la cuenta
+    SELECT SALDO into v_saldo_cuenta
+    FROM CUENTA
+    WHERE ID_CUENTA = p_no_cuenta;
+
+    --Obtener el saldo de apertura de la cuenta
+    SELECT MONTO_APERTURA INTO v_saldo_apertura
+    FROM CUENTA
+    WHERE ID_CUENTA = p_no_cuenta;
+
+    -- Imprimir resultados en formato JSON
+    DBMS_OUTPUT.PUT_LINE('{
+        "Nombre_Cliente": "' || v_nombre_cliente || '",
+        "Tipo_Cliente": "' || v_tipo_cliente || '",
+        "Tipo_Cuenta": "' || v_tipo_cuenta || '",
+        "Saldo_Cuenta": ' || v_saldo_cuenta || ',
+        "Saldo_Apertura": ' || v_saldo_apertura || '
+    }');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error al consultar la información de la cuenta: ' || SQLERRM);
+        ROLLBACK;
+end;
+/
+
+create PROCEDURE consultarCliente(
+    p_id_cliente in NUMBER
+) AS
+    v_nombre_cliente VARCHAR2(80);
+    v_fecha_creacion DATE;
+    v_usuario VARCHAR2(40);
+    v_telefonos VARCHAR2(2000);
+    v_correos VARCHAR2(2000);
+    v_num_ctas NUMBER;
+    v_tipos_cta VARCHAR2(2000);
+    v_cliente_exist NUMBER;
+BEGIN
+    SELECT COUNT(*)
+    INTO v_cliente_exist
+    FROM CLIENTE
+    WHERE ID_CLIENTE = p_id_cliente;
+
+    IF v_cliente_exist = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: No se encontro el cliente con el ID especificado');
+        RETURN;
+    end if;
+    
+    -- Obtener el nombre completo del cliente
+    SELECT NOMBRE || ' ' || APELLIDO INTO v_nombre_cliente
+    FROM CLIENTE
+    WHERE ID_CLIENTE = p_id_cliente;
+
+    -- Obtener la fecha de creacion del cliente
+    SELECT FECHA INTO v_fecha_creacion
+    FROM CLIENTE
+    WHERE ID_CLIENTE = p_id_cliente;
+
+    -- Obtener el usuario del cliente
+    SELECT USUARIO INTO v_usuario
+    FROM CLIENTE
+    WHERE ID_CLIENTE = p_id_cliente;
+
+    --Obtener los telefonos del cliente
+    SELECT LISTAGG(NUMERO, ', ') WITHIN GROUP ( ORDER BY ID_TELEFONO) INTO v_telefonos
+    FROM TELEFONO
+    WHERE ID_CLIENTE = p_id_cliente;
+
+    --Obtener los correos del cliente
+    SELECT LISTAGG(DIRECCION, ', ') WITHIN GROUP ( ORDER BY ID_CORREO) INTO v_correos
+    FROM CORREO
+    WHERE ID_CLIENTE = p_id_cliente;
+
+    -- Obtener los tipos de cuenta distintos del cliente
+    SELECT LISTAGG(tc.nombre, ', ') WITHIN GROUP (ORDER BY tc.nombre) INTO v_tipos_cta
+    FROM (
+        SELECT DISTINCT tc.nombre
+        FROM cuenta c
+        JOIN tipo_cuenta tc ON c.id_tcuenta = tc.id_tcuenta
+        WHERE c.id_cliente = p_id_cliente
+    ) tc;
+
+
+    -- Obtener el numero de cuentas del cliente
+    SELECT COUNT(*) INTO v_num_ctas
+    FROM CUENTA
+    WHERE ID_CLIENTE = p_id_cliente;
+    -- Imprimir resultados en formato JSON
+    DBMS_OUTPUT.PUT_LINE('{
+        "Id_Cliente": ' || p_id_cliente || ',
+        "Nombre_Completo": "' || v_nombre_cliente || '",
+        "Fecha_Creacion": "' || TO_CHAR(v_fecha_creacion, 'DD/MM/YYYY HH24:MI:SS') || '",
+        "Usuario": "' || v_usuario || '",
+        "Telefonos": "' || v_telefonos || '",
+        "Correos": "' || v_correos || '",
+        "No_Cuentas": ' || v_num_ctas || ',
+        "Tipos_Cuenta": "' || v_tipos_cta || '"
+    }');
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error al consultar la información del cliente: ' || SQLERRM);
+        ROLLBACK;
+end;
+/
+
+create PROCEDURE consultarMovsCliente(
+    p_id_cliente IN NUMBER
+) AS
+    v_json_response CLOB;
+    v_cliente_exist NUMBER;
+BEGIN
+    --VERIFICAR SI EXISTE EL ID DEL CLIENTE
+    SELECT COUNT(*)
+    INTO v_cliente_exist
+    FROM CLIENTE
+    WHERE ID_CLIENTE = p_id_cliente;
+
+    IF v_cliente_exist = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: No se encontro el cliente con el ID especificado');
+        RETURN;
+    end if;
+
+    v_json_response := '[' || CHR(10);
+    FOR mov IN (
+        SELECT trans.ID_TRANSACCION, trans.ID_TTRANS as tipo_transaccion,
+               ttrans.NOMBRE AS tipo_servicio,
+               COALESCE(com.IMPORTE,ps.COSTO, dep.MONTO, deb.MONTO) AS monto,
+               trans.ID_CUENTA as id_cuenta,
+               tcta.NOMBRE as tipo_cuenta
+        FROM TRANSACCION trans
+        LEFT JOIN COMPRA com ON trans.ID_COMPRA = com.ID_COMPRA
+        LEFT JOIN PRO_SER ps ON com.ID_PRO_SER = ps.ID_PRO_SER
+        LEFT JOIN DEPOSITO dep ON trans.ID_DEPOSITO = dep.ID_DEPOSITO
+        LEFT JOIN DEBITO deb ON trans.ID_DEBITO = deb.ID_DEBITO
+        JOIN TIPO_TRANS ttrans ON trans.ID_TTRANS = ttrans.ID_TTRANS
+        JOIN CUENTA cta ON trans.ID_CUENTA = cta.ID_CUENTA
+        JOIN TIPO_CUENTA tcta ON cta.ID_TCUENTA = tcta.ID_TCUENTA
+        WHERE cta.ID_CLIENTE = p_id_cliente
+    ) LOOP
+        v_json_response := v_json_response || '{' || CHR(10) || '"Id_Transaccion": ' || mov.id_transaccion || ',' || CHR(10)
+                        || ' "Tipo_Transaccion": ' || mov.tipo_transaccion || ',' || CHR(10)
+                        || ' "Monto": ' || mov.monto || ',' || CHR(10)
+                        || ' "Tipo_Servicio": "' || mov.tipo_servicio || '",' || CHR(10)
+                        || ' "Id_Cuenta": ' || mov.id_cuenta || ',' || CHR(10)
+                        || ' "Tipo_Cuenta": "' || mov.tipo_cuenta || '"' || CHR(10) || '},' || CHR(10);
+    end loop;
+
+     IF v_json_response = '[' || CHR(10) THEN
+        DBMS_OUTPUT.PUT_LINE('No se encontraron movimientos con el cliente');
+        RETURN;
+    end if;
+
+    v_json_response := RTRIM(v_json_response, ',' || CHR(10)) || CHR(10) || ']';
+
+    DBMS_OUTPUT.PUT_LINE(v_json_response);
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error al consultar la información del cliente: ' || SQLERRM);
+        ROLLBACK;
+end;
+/
+
+create PROCEDURE consultarTipoCuentas(
+    p_id_tcuenta IN NUMBER
+) AS
+    v_tipo_cuenta NUMBER;
+    v_nombre_cuenta VARCHAR2(40);
+    v_cantidad_clientes NUMBER;
+    v_tipo_exist NUMBER;
+BEGIN
+    --Mostrar error si no existe el tipo de cuenta
+    SELECT COUNT(*) INTO v_tipo_exist
+    FROM TIPO_CUENTA
+    WHERE ID_TCUENTA = p_id_tcuenta;
+
+    IF v_tipo_exist = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Error: No se encontro el tipo de cuenta con el ID especificado.');
+        RETURN;
+    end if;
+
+    SELECT ID_TCUENTA, NOMBRE INTO v_tipo_cuenta, v_nombre_cuenta
+    FROM TIPO_CUENTA
+    WHERE ID_TCUENTA = p_id_tcuenta;
+
+    SELECT COUNT(*) INTO v_cantidad_clientes
+    FROM (
+        SELECT DISTINCT  ID_CLIENTE
+        FROM CUENTA
+        WHERE ID_TCUENTA = p_id_tcuenta
+         );
+
+    -- Imprimir resultados en formato JSON
+    DBMS_OUTPUT.PUT_LINE('{
+        "Id_Tipo_Cuenta": ' || v_tipo_cuenta || ',
+        "Nombre_Cuenta": "' || v_nombre_cuenta || '",
+        "Cantidad_Clientes": "' || v_cantidad_clientes || '"
+    }');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error al consultar la información de los tipos de cuenta: ' || SQLERRM);
+        ROLLBACK;
+end;
+/
+
+create PROCEDURE consultarMovsGenFech(
+    p_fecha_inicio IN VARCHAR2,
+    p_fecha_fin IN VARCHAR2
+) AS
+    v_json_response CLOB;
+    v_fecha_inicio DATE;
+    v_fecha_fin DATE;
+BEGIN
+    IF p_fecha_inicio IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: La fecha de inicio es un parametro obligatorio.');
+        RETURN;
+    end if;
+    
+    IF p_fecha_fin IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: La fecha final es un parametro obligatorio.');
+        RETURN;
+    end if;
+    
+    BEGIN
+        v_fecha_inicio := TO_DATE(p_fecha_inicio, 'DD/MM/YYYY');
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha de inicio no tiene el formato correcto.');
+            RETURN;
+    end;
+    
+    BEGIN
+        v_fecha_fin := TO_DATE(p_fecha_fin, 'DD/MM/YYYY');
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha final no tiene el formato correcto.');
+            RETURN;
+    end;
+    
+    v_json_response := '[' || CHR(10);
+    FOR mov IN (
+        SELECT trans.ID_TRANSACCION,
+               trans.ID_TTRANS as tipo_transaccion,
+               ttrans.NOMBRE as tipo_servicio,
+               cli.NOMBRE as nombre_cliente,
+               cta.ID_CUENTA as id_cuenta,
+               tcta.NOMBRE as tipo_cuenta,
+               trans.FECHA as fecha,
+               COALESCE(com.IMPORTE, ps.COSTO, dep.MONTO, deb.MONTO) AS monto,
+               trans.DETALLE as otros_detalles
+        FROM TRANSACCION trans
+        JOIN TIPO_TRANS ttrans ON trans.ID_TTRANS = ttrans.ID_TTRANS
+        JOIN CUENTA cta ON trans.ID_CUENTA = cta.ID_CUENTA
+        JOIN TIPO_CUENTA tcta ON cta.ID_TCUENTA = tcta.ID_TCUENTA
+        JOIN CLIENTE cli ON cta.ID_CLIENTE = cli.ID_CLIENTE
+        LEFT JOIN COMPRA com ON trans.ID_COMPRA = com.ID_COMPRA
+        LEFT JOIN PRO_SER ps ON com.ID_PRO_SER = ps.ID_PRO_SER
+        LEFT JOIN DEPOSITO dep ON trans.ID_DEPOSITO = dep.ID_DEPOSITO
+        LEFT JOIN DEBITO deb ON trans.ID_DEBITO = deb.ID_DEBITO
+        WHERE trans.FECHA BETWEEN TO_DATE(p_fecha_inicio, 'DD/MM/YYYY') AND TO_DATE(p_fecha_fin, 'DD/MM/YYYY')
+    ) LOOP
+        v_json_response := v_json_response || '{' || CHR(10)
+                        || '"Id_Transaccion": ' || mov.ID_TRANSACCION || ',' || CHR(10)
+                        || '"Tipo_Transaccion": ' || mov.tipo_transaccion || ',' || CHR(10)
+                        || '"Tipo_Servicio": "' || mov.tipo_servicio || '",' || CHR(10)
+                        || '"Nombre_Cliente": "' || mov.nombre_cliente || '",' || CHR(10)
+                        || '"No_Cuenta": ' || mov.id_cuenta || ',' || CHR(10)
+                        || '"Tipo_Cuenta": "' || mov.tipo_cuenta || '",' || CHR(10)
+                        || '"Fecha": "' || TO_CHAR(mov.fecha, 'DD/MM/YYYY') || '",' || CHR(10)
+                        || '"Monto": ' || mov.monto || ',' || CHR(10)
+                        || '"Otros_detalles": ' || mov.otros_detalles || ',' || CHR(10)
+                        || '},' || CHR(10);
+
+    end loop;
+
+    IF v_json_response = '[' || CHR(10) THEN
+        DBMS_OUTPUT.PUT_LINE('No se encontraron registros');
+        RETURN;
+    end if;
+    -- Eliminar la última coma y agregar corchetes finales
+    v_json_response := RTRIM(v_json_response, ',' || CHR(10)) || CHR(10) || ']';
+
+    DBMS_OUTPUT.PUT_LINE(v_json_response);
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error al consultar los movimientos: ' || SQLERRM);
+        ROLLBACK;
+end;
+/
+
+create PROCEDURE consultarMovsFechClien(
+    p_id_cliente IN NUMBER,
+    p_fecha_inicio IN VARCHAR2,
+    p_fecha_fin IN VARCHAR2
+) AS
+    v_json_response CLOB;
+    v_cliente_exist NUMBER;
+    v_fecha_inicio DATE;
+    v_fecha_fin DATE;
+BEGIN
+    --VERIFICAR SI EXISTE EL ID DEL CLIENTE
+    SELECT COUNT(*)
+    INTO v_cliente_exist
+    FROM CLIENTE
+    WHERE ID_CLIENTE = p_id_cliente;
+
+    IF v_cliente_exist = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: No se encontro el cliente con el ID especificado');
+        RETURN;
+    end if;
+    
+    IF p_fecha_inicio IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: La fecha de inicio es un parametro obligatorio.');
+        RETURN;
+    end if;
+    
+    IF p_fecha_fin IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'Error: La fecha final es un parametro obligatorio.');
+        RETURN;
+    end if;
+    
+    BEGIN
+        v_fecha_inicio := TO_DATE(p_fecha_inicio, 'DD/MM/YYYY');
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha de inicio no tiene el formato correcto.');
+            RETURN;
+    end;
+    
+    BEGIN
+        v_fecha_fin := TO_DATE(p_fecha_fin, 'DD/MM/YYYY');
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha final no tiene el formato correcto.');
+            RETURN;
+    end;
+
+    v_json_response := '[' || CHR(10);
+    FOR mov IN (
+        SELECT trans.ID_TRANSACCION,
+               trans.ID_TTRANS as tipo_transaccion,
+               ttrans.NOMBRE as tipo_servicio,
+               cli.NOMBRE as nombre_cliente,
+               cta.ID_CUENTA as id_cuenta,
+               tcta.NOMBRE as tipo_cuenta,
+               trans.FECHA as fecha,
+               COALESCE(com.IMPORTE, ps.COSTO, dep.MONTO, deb.MONTO) AS monto,
+               trans.DETALLE as otros_detalles
+        FROM TRANSACCION trans
+        JOIN TIPO_TRANS ttrans ON trans.ID_TTRANS = ttrans.ID_TTRANS
+        JOIN CUENTA cta ON trans.ID_CUENTA = cta.ID_CUENTA
+        JOIN TIPO_CUENTA tcta ON cta.ID_TCUENTA = tcta.ID_TCUENTA
+        JOIN CLIENTE cli ON cta.ID_CLIENTE = cli.ID_CLIENTE
+        LEFT JOIN COMPRA com ON trans.ID_COMPRA = com.ID_COMPRA
+        LEFT JOIN PRO_SER ps ON com.ID_PRO_SER = ps.ID_PRO_SER
+        LEFT JOIN DEPOSITO dep ON trans.ID_DEPOSITO = dep.ID_DEPOSITO
+        LEFT JOIN DEBITO deb ON trans.ID_DEBITO = deb.ID_DEBITO
+        WHERE trans.FECHA BETWEEN v_fecha_inicio AND v_fecha_fin
+        AND cta.ID_CLIENTE = p_id_cliente
+    ) LOOP
+        v_json_response := v_json_response || '{' || CHR(10)
+                        || '"Id_Transaccion": ' || mov.ID_TRANSACCION || ',' || CHR(10)
+                        || '"Tipo_Transaccion": ' || mov.tipo_transaccion || ',' || CHR(10)
+                        || '"Tipo_Servicio": "' || mov.tipo_servicio || '",' || CHR(10)
+                        || '"Nombre_Cliente": "' || mov.nombre_cliente || '",' || CHR(10)
+                        || '"No_Cuenta": ' || mov.id_cuenta || ',' || CHR(10)
+                        || '"Tipo_Cuenta": "' || mov.tipo_cuenta || '",' || CHR(10)
+                        || '"Fecha": "' || TO_CHAR(mov.fecha, 'DD/MM/YYYY') || '",' || CHR(10)
+                        || '"Monto": ' || mov.monto || ',' || CHR(10)
+                        || '"Otros_detalles": ' || mov.otros_detalles || ',' || CHR(10)
+                        || '},' || CHR(10);
+
+    end loop;
+
+    --Eliminar la utlima coma ya gregar corchetes finales
+    IF v_json_response = '[' || CHR(10) THEN
+        DBMS_OUTPUT.PUT_LINE('No se encontraron registros');
+        RETURN;
+    end if;
+    -- Eliminar la última coma y agregar corchetes finales
+    v_json_response := RTRIM(v_json_response, ',' || CHR(10)) || CHR(10) || ']';
+
+    DBMS_OUTPUT.PUT_LINE(v_json_response);
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error al consultar la información del cliente: ' || SQLERRM);
+        ROLLBACK;
+end;
+/
+
+create PROCEDURE consultarDesasignacion AS
+    v_json_response CLOB;
+BEGIN
+    v_json_response := '[' || CHR(10);
+
+    -- Consultar los productos y servicios
+    FOR prod_serv IN (
+        SELECT ID_PRO_SER,
+               DESCRIPCION,
+               TIPO,
+               CASE
+                   WHEN TIPO = 2 THEN 'Producto'
+                   WHEN TIPO = 1 THEN 'Servicio'
+               END AS NOMBRE,
+               COSTO
+        FROM PRO_SER
+    ) LOOP
+        v_json_response := v_json_response || '{' || CHR(10)
+                        || '"ID_PRO_SER": ' || prod_serv.ID_PRO_SER || ',' || CHR(10)
+                        || '"Nombre": "' || prod_serv.DESCRIPCION || '",' || CHR(10)
+                        || '"Tipo": "' || prod_serv.TIPO || '",' || CHR(10)
+                        || '"Descripcion": "' || prod_serv.NOMBRE || '",' || chr(10)
+                        || '"Costo": ' || prod_serv.COSTO || CHR(10)
+                        || '},' || CHR(10);
+    END LOOP;
+
+    -- Eliminar la última coma y agregar corchetes finales
+    v_json_response := RTRIM(v_json_response, ',' || CHR(10)) || CHR(10) || ']';
+
+    DBMS_OUTPUT.PUT_LINE(v_json_response);
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error al consultar la información de los servicios: ' || SQLERRM);
+        ROLLBACK;
+END;
 /
 
