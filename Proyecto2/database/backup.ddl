@@ -25,7 +25,7 @@ create trigger PRO_SER_VCOSTO
     on PRO_SER
     for each row
 BEGIN
-    IF :NEW.TIPO = 1 AND (:NEW.COSTO IS NULL OR :NEW.COSTO < 0) THEN
+    IF :NEW.TIPO = 1 AND (:NEW.COSTO IS NULL OR :NEW.COSTO <= 0) THEN
         RAISE_APPLICATION_ERROR(-20001, 'El costo es obligatorio y debe ser mayor a 0 para un servicio.');
     end if;
 
@@ -755,10 +755,16 @@ create PROCEDURE registrarTipoCliente(
     p_nombre IN VARCHAR2,
     p_descripcion IN VARCHAR2
 ) AS
+    v_tcl_ant NUMBER;
 BEGIN
     --Verificar que no vengan null
     IF p_nombre IS NULL THEN
         RAISE_APPLICATION_ERROR(-20001,'El nombre es un campo obligatorio.');
+        RETURN;
+    end if;
+
+    IF LENGTH(p_nombre) > 40 THEN
+        RAISE_APPLICATION_ERROR(-20001,'El nombre excede el numero maximo de caracteres que es de 40.');
         RETURN;
     end if;
     
@@ -766,6 +772,21 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20001,'La descripcion es un campo obligatorio.');
         RETURN;
     end if;
+
+    IF LENGTH(p_descripcion) > 100 THEN
+        RAISE_APPLICATION_ERROR(-20001,'La descripcion excede el numero maximo de caracteres que es de 100.');
+        RETURN;
+    end if;
+    
+    SELECT COUNT(*) INTO v_tcl_ant
+    FROM TIPO_CLIENTE
+    WHERE DESCRIPCION = p_descripcion OR NOMBRE = p_nombre;
+    
+    IF v_tcl_ant > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001,'El objeto ya se encuentra en la base de datos');
+        return ;
+    end if;
+    
     
     --Insertar el tipo de cliente
     INSERT INTO TIPO_CLIENTE (NOMBRE, DESCRIPCION)
@@ -785,15 +806,35 @@ create PROCEDURE registrarTipoCuenta(
     p_nombre IN VARCHAR2,
     p_descripcion IN VARCHAR2
 ) AS
+    v_tcta_ant NUMBER;
 BEGIN
     IF p_nombre IS NULL THEN
         RAISE_APPLICATION_ERROR(-20001,'El nombre es un campo obligatorio.');
+        RETURN;
+    end if;
+    
+    IF LENGTH(p_nombre) > 40 THEN
+        RAISE_APPLICATION_ERROR(-20001,'El nombre excede el numero maximo de caracteres que es de 40.');
         RETURN;
     end if;
 
     IF p_descripcion IS NULL THEN
         RAISE_APPLICATION_ERROR(-20001,'La descripcion es un campo obligatorio.');
         RETURN;
+    end if;
+    
+    IF LENGTH(p_descripcion) > 100 THEN
+        RAISE_APPLICATION_ERROR(-20001,'La descripcion excede el numero maximo de caracteres que es de 100.');
+        RETURN;
+    end if;
+    
+    SELECT COUNT(*) INTO v_tcta_ant
+    FROM TIPO_CUENTA
+    WHERE DESCRIPCION = p_descripcion OR NOMBRE = p_nombre;
+    
+    IF v_tcta_ant > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001,'El objeto ya se encuentra en la base de datos');
+        return ;
     end if;
 
     --Insertar el tipo de cliente
@@ -815,15 +856,35 @@ create PROCEDURE registrarTipoTransaccion(
     p_nombre IN VARCHAR2,
     p_descripcion IN VARCHAR2
 ) AS
+    v_ttran_ant NUMBER;
 BEGIN
     IF p_nombre IS NULL THEN
         RAISE_APPLICATION_ERROR(-20001,'El nombre es un campo obligatorio.');
+        RETURN;
+    end if;
+    
+    IF LENGTH(p_nombre) > 40 THEN
+        RAISE_APPLICATION_ERROR(-20001,'El nombre excede el numero maximo de caracteres que es de 40.');
         RETURN;
     end if;
 
     IF p_descripcion IS NULL THEN
         RAISE_APPLICATION_ERROR(-20001,'La descripcion es un campo obligatorio.');
         RETURN;
+    end if;
+    
+    IF LENGTH(p_descripcion) > 100 THEN
+        RAISE_APPLICATION_ERROR(-20001,'La descripcion excede el numero maximo de caracteres que es de 100.');
+        RETURN;
+    end if;
+    
+    SELECT COUNT(*) INTO v_ttran_ant
+    FROM TIPO_TRANS
+    WHERE DESCRIPCION = p_descripcion OR NOMBRE = p_nombre;
+    
+    IF v_ttran_ant > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001,'El objeto ya se encuentra en la base de datos');
+        return ;
     end if;
     
     --Insertar el tipo de cliente
@@ -878,7 +939,17 @@ create PROCEDURE registrarCliente(
     v_telefonos_arr DBMS_UTILITY.LNAME_ARRAY;
     v_correos_arr DBMS_UTILITY.LNAME_ARRAY;
     v_tipo_cliente_exists NUMBER;
+    v_id_ant NUMBER;
 BEGIN
+    IF p_id_cliente = 0 OR p_id_cliente IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'EL id del cliente no puede venir nulo');
+        RETURN;
+    end if;
+
+    IF p_id_tcliente = 0 OR p_id_tcliente IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El tipo de cliente no puede venir nulo');
+    end if;
+
     -- Verificar si el tipo de cliente existe
     SELECT COUNT(*) INTO v_tipo_cliente_exists
     FROM TIPO_CLIENTE
@@ -895,8 +966,18 @@ BEGIN
         RETURN;
     end if;
 
+    IF LENGTH(p_nombre) > 40 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El nombre excede el numero maximo de caracteres que es de 40');
+        RETURN;
+    end if;
+
     IF p_apellido IS NULL THEN
         RAISE_APPLICATION_ERROR(-20001, 'El apellido es un campo obligatorio');
+        RETURN;
+    end if;
+
+    IF LENGTH(p_apellido) > 40 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El apellido excede el numero maximo de caracteres que es de 40');
         RETURN;
     end if;
 
@@ -915,13 +996,47 @@ BEGIN
         RETURN;
     end if;
 
-    IF p_contrasena IS NULL THEN
-        RAISE_APPLICATION_ERROR(-20001, 'La contrasena es obligatoria.');
+    IF LENGTH(p_usuario) > 40 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El usuario excede el numero maximo de caracteres que es de 40');
+        RETURN;
     end if;
 
+    IF p_contrasena IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'La contrasena es obligatoria.');
+        RETURN;
+    end if;
+
+    IF LENGTH(p_contrasena) > 200 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'La contraseña excede el numero maximo de caracteres que es de 200');
+        RETURN;
+    end if;
+
+    SELECT COUNT(*) INTO v_id_ant
+    FROM CLIENTE
+    WHERE ID_CLIENTE = p_id_cliente;
+
+    IF v_id_ant > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El id de cliente ya existe en la base de datos');
+        RETURN;
+    end if;
     -- Separa los numeros y correos
-    v_telefonos_arr := SPLIT_STRING(p_telefonos, '-');
-    v_correos_arr := SPLIT_STRING(p_correos, '|');
+    BEGIN
+        --Convertir el arreglo de telefonos
+        v_telefonos_arr := SPLIT_STRING(p_telefonos, '-');
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Los telefonos no tienen un formato correcto, se separan con -');
+            RETURN;
+    end;
+    
+     BEGIN
+        --Convertir el arreglo de telefonos
+        v_correos_arr := SPLIT_STRING(p_correos, '|');
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20001,'Los correos no tienen un formato correcto, se separan con |');
+            RETURN;
+    end;
 
     -- Insertar el cliente
     INSERT INTO CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO, USUARIO, CONTRASENA, ID_TCLIENTE)
@@ -963,7 +1078,28 @@ create PROCEDURE registrarCuenta(
     v_id_cliente_exists NUMBER;
     v_fecha_apertura DATE;
     v_detalle VARCHAR2(100);
+    v_id_ant NUMBER;
 BEGIN
+    IF p_id_cuenta = 0 OR p_id_cuenta IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El id de la cuenta no puede ser nulo');
+        RETURN;
+    end if;
+
+    IF LENGTH(TO_CHAR(p_id_cuenta)) != 10 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Un numero valido de cuenta debe tener 10 digitos');
+        RETURN;
+    end if;
+
+    IF p_id_tcuenta = 0 OR p_id_tcuenta IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El tipo de cuente no puede ser nulo');
+        RETURN;
+    end if;
+
+    IF p_id_cliente = 0 OR p_id_cliente IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El id del cliente no puede ser nulo');
+        RETURN;
+    end if;
+
      -- Verificar si el tipo de cliente existe
     SELECT COUNT(*) INTO v_tipo_cuenta_exists
     FROM TIPO_CUENTA
@@ -988,8 +1124,13 @@ BEGIN
         RETURN;
     end if;
      
-    IF p_descripcion IS NULL THEN
-        RAISE_APPLICATION_ERROR(-20001,'La descripcion es obligatoria.');
+    --IF p_descripcion IS NULL THEN
+    --    RAISE_APPLICATION_ERROR(-20001,'La descripcion es obligatoria.');
+    --    RETURN;
+    --end if;
+
+    IF LENGTH(p_descripcion) > 50 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'La descripcion excede el numero maximo de caracteres que es de 50');
         RETURN;
     end if;
 
@@ -1000,7 +1141,7 @@ BEGIN
             v_fecha_apertura := TO_DATE(p_fecha_apertura, 'DD/MM/YYYY HH24:MI:SS');
         EXCEPTION
         WHEN OTHERS THEN
-            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha final no tiene el formato correcto.');
+            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha no tiene el formato correcto.');
             RETURN;
         end;
     end if;
@@ -1009,6 +1150,20 @@ BEGIN
         v_detalle := NULL;
     ELSE
         v_detalle := p_detalle;
+    end if;
+
+    IF LENGTH(p_detalle) > 100 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El detalle excede el numero maximo de caracteres que es de 100');
+        RETURN;
+    end if;
+    
+    SELECT COUNT(*) INTO v_id_ant
+    FROM CUENTA
+    WHERE ID_CUENTA = p_id_cuenta;
+    
+    IF v_id_ant > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El numero de cuenta ya existe en la base de datos');
+        RETURN;
     end if;
      
     --InserTar la cuenta
@@ -1032,7 +1187,22 @@ create PROCEDURE crearProductoServicio(
     p_descripcion IN VARCHAR2
 ) AS
     v_costo NUMBER;
+    v_por_ant NUMBER;
 BEGIN
+    IF LENGTH(p_descripcion) > 100 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'La descripcion no puede sobrepasar los 100 caracteres');
+        RETURN;
+    end if;
+
+    SELECT COUNT(*) INTO v_por_ant
+    FROM PRO_SER
+    WHERE ID_PRO_SER = p_id_pro_ser OR DESCRIPCION = p_descripcion;
+    
+    IF v_por_ant > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001,'El tipo de servicio o producto ya existe en la Base de datos');
+        RETURN;
+    end if;
+    
     if p_costo = 0 THEN
         v_costo := NULL;
     ELSE
@@ -1072,10 +1242,30 @@ create PROCEDURE asignarTransaccion(
     v_id_cliente_cuenta NUMBER;
     v_saldo_cuenta NUMBER;
     v_detalle VARCHAR2(40);
+    v_id_acc_ant NUMBER;
 BEGIN
+    --VALIDACION DE DATOS
+    IF LENGTH(p_detalle) > 40 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El detalle excede los 40 caracteres.');
+        RETURN;
+    end if;
+
+    IF LENGTH(TO_CHAR(p_id_cuenta)) != 10 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Un NO. de cuenta valido debe tener 10 digitos');
+    end if;
+
+    SELECT COUNT(*) INTO v_id_acc_ant
+    FROM TRANSACCION
+    WHERE ID_DEPOSITO = p_id_accion OR ID_DEBITO = p_id_accion OR ID_COMPRA = p_id_accion;
+
+    IF v_id_acc_ant > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El id de la accion ya esta asociado a una transaccion.');
+        RETURN;
+    end if;
+
     --Convertir la cadena de fecha a tipo fecha
     IF p_fecha_str IS NULL THEN
-        RAISE_APPLICATION_ERROR(-20001,'Error: La fecha es un campo obligatorio.');
+        RAISE_APPLICATION_ERROR(-20001,'La fecha es un campo obligatorio.');
         RETURN;
     end if;
 
@@ -1083,7 +1273,7 @@ BEGIN
         v_fecha := TO_DATE(p_fecha_str,'DD/MM/YYYY');
     EXCEPTION
         WHEN OTHERS THEN
-            RAISE_APPLICATION_ERROR(-20001,'Error: La fecha no tiene el formato correcto.');
+            RAISE_APPLICATION_ERROR(-20001,'La fecha no tiene el formato correcto.');
             RETURN;
     END;
 
@@ -1115,7 +1305,7 @@ BEGIN
         WHERE ID_COMPRA = p_id_accion;
         
         IF v_id_accion_exist = 0 THEN
-            RAISE_APPLICATION_ERROR(-20001, 'El ID de la accion realizada no existe.');
+            RAISE_APPLICATION_ERROR(-20001, 'El ID de la compra realizada no existe.');
             RETURN;
         end if;
         
@@ -1130,7 +1320,7 @@ BEGIN
         WHERE ID_DEPOSITO = p_id_accion;
         
         IF v_id_accion_exist = 0 THEN
-            RAISE_APPLICATION_ERROR(-20001, 'El ID de la accion realizada no existe.');
+            RAISE_APPLICATION_ERROR(-20001, 'El ID del deposito realizado no existe.');
             RETURN;
         end if;
         
@@ -1144,7 +1334,7 @@ BEGIN
         WHERE ID_DEBITO = p_id_accion;
         
         IF v_id_accion_exist = 0 THEN
-            RAISE_APPLICATION_ERROR(-20001, 'El ID de la accion realizada no existe.');
+            RAISE_APPLICATION_ERROR(-20001, 'El ID del debito realizado no existe.');
             RETURN;
         end if;
         
@@ -1227,7 +1417,13 @@ create PROCEDURE realizarDeposito(
     v_fecha DATE;
     v_id_cliente_exist NUMBER;
     v_detalle VARCHAR2(40);
+    v_id_ant NUMBER;
 BEGIN
+    IF p_id_deposito = 0 OR p_id_deposito IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'El id del deposito no puede ser nulo');
+        RETURN;
+    end if;
+
     IF p_fecha_str IS NULL THEN
         RAISE_APPLICATION_ERROR(-20001,'Error: La fecha es un parametro obligatorio.');
         RETURN;
@@ -1248,6 +1444,28 @@ BEGIN
     ELSE
         v_detalle := p_detalle;
     end if;
+
+    IF p_id_cliente = 0 OR p_id_cliente IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'EL id del cliente no puede ser nulo');
+        RETURN ;
+    end if;
+    
+    IF LENGTH(p_detalle) > 40 THEN
+        RAISE_APPLICATION_ERROR(-20001,'El detalle excede la cantidad maxima de caracteres, la cual es 40');
+        RETURN;
+    end if;
+    
+    SELECT COUNT(*) INTO v_id_ant
+    FROM DEPOSITO
+    WHERE ID_DEPOSITO = p_id_deposito;
+    
+    IF v_id_ant > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El id del deposito ya existe en la base de datos');
+        RETURN;
+    end if;
+
+
+
 
     -- Verificar que exista el id
     SELECT COUNT(*) INTO v_id_cliente_exist
@@ -1288,7 +1506,13 @@ create PROCEDURE realizarDebito(
     v_fecha DATE;
     v_id_cliente_exist NUMBER;
     v_detalle VARCHAR2(40);
+    v_id_ant NUMBER;
 BEGIN
+    IF p_id_debito = 0 OR p_id_debito IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'EL id del debito no puede ser nulo');
+        RETURN;
+    end if;
+
     IF p_fecha_str IS NULL THEN
         RAISE_APPLICATION_ERROR(-20001,'Error: La fecha es un parametro obligatorio.');
         RETURN;
@@ -1309,6 +1533,24 @@ BEGIN
         v_detalle := NULL;
     ELSE
         v_detalle := p_detalle;
+    end if;
+    
+    IF p_id_cliente = 0 OR p_id_cliente IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El id del cliente no puede ser nulo');
+        RETURN;
+    end if;
+    
+    IF LENGTH(p_detalle) > 40 THEN
+        RAISE_APPLICATION_ERROR(-20001,'El detalle excede la cantidad maxima de caracteres, la cual es 40');
+        RETURN;
+    end if;
+    
+    SELECT COUNT(*) INTO v_id_ant
+    FROM DEBITO
+    WHERE ID_DEBITO = p_id_debito;
+    
+    IF v_id_ant > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El id del debito ya se encuentra en la base de datos');
     end if;
 
     -- Verificar que exista el id
@@ -1354,7 +1596,13 @@ create PROCEDURE realizarCompra(
     v_tipo_pro_ser NUMBER;
     v_importe NUMBER;
     v_detalle VARCHAR2(40);
+    v_id_ant NUMBER;
 BEGIN
+    IF p_id_compra = 0 OR p_id_compra IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El id de compra no puede ser nulo');
+        RETURN;
+    end if;
+    
     IF p_fecha_str IS NULL THEN
         RAISE_APPLICATION_ERROR(-20001,'Error: La fecha es un parametro obligatorio.');
         RETURN;
@@ -1382,7 +1630,25 @@ BEGIN
     ELSE
         v_detalle := p_detalle;
     end if;
+
+    IF p_id_cliente = 0 OR p_id_cliente IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'El id del cliente no puede ser nulo');
+        RETURN;
+    end if;
     
+    IF LENGTH(p_detalle) > 40 THEN
+        RAISE_APPLICATION_ERROR(-20001,'El detalle excede la cantidad maxima de caracteres, la cual es 40');
+        RETURN;
+    end if;
+    
+    SELECT COUNT(*) INTO v_id_ant
+    FROM COMPRA
+    WHERE ID_COMPRA = p_id_compra;
+    
+    IF v_id_ant > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El id de la compra ya existe en la base de datos');
+        RETURN;
+    end if;
     
 
     -- Verificar que exista el id
@@ -1445,6 +1711,17 @@ create PROCEDURE consultarSaldoCliente(
     v_saldo_apertura NUMBER;
     v_cta_exist NUMBER;
 BEGIN
+    
+    IF p_no_cuenta = 0 or p_no_cuenta IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El parametro NO. Cuenta no puede ser nulo.');
+        RETURN;
+    end if;
+    
+    IF LENGTH(TO_CHAR(p_no_cuenta)) != 10 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El numero de cuenta no tiene un formato valido, debe contar con 10 digitos');
+        RETURN;
+    end if;
+
     SELECT COUNT(*) INTO v_cta_exist
     FROM CUENTA
     WHERE ID_CUENTA = p_no_cuenta;
@@ -1509,13 +1786,18 @@ create PROCEDURE consultarCliente(
     v_tipos_cta VARCHAR2(2000);
     v_cliente_exist NUMBER;
 BEGIN
+    IF p_id_cliente = 0 or p_id_cliente IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El id del cliente no puede ser null');
+        RETURN;
+    end if;
+
     SELECT COUNT(*)
     INTO v_cliente_exist
     FROM CLIENTE
     WHERE ID_CLIENTE = p_id_cliente;
 
     IF v_cliente_exist = 0 THEN
-        RAISE_APPLICATION_ERROR(-20001,'Error: No se encontro el cliente con el ID especificado');
+        RAISE_APPLICATION_ERROR(-20001,'No se encontro el cliente con el ID especificado');
         RETURN;
     end if;
     
@@ -1583,6 +1865,11 @@ create PROCEDURE consultarMovsCliente(
     v_json_response CLOB;
     v_cliente_exist NUMBER;
 BEGIN
+    IF p_id_cliente = 0 OR p_id_cliente IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'El parametro cliente no puede ser nulo.');
+        RETURN;
+    end if;
+    
     --VERIFICAR SI EXISTE EL ID DEL CLIENTE
     SELECT COUNT(*)
     INTO v_cliente_exist
@@ -1642,6 +1929,11 @@ create PROCEDURE consultarTipoCuentas(
     v_cantidad_clientes NUMBER;
     v_tipo_exist NUMBER;
 BEGIN
+    
+    IF p_id_tcuenta = 0 OR p_id_tcuenta IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'El parametro tipo cuenta no puede ser nulo');
+        RETURN;
+    end if;
     --Mostrar error si no existe el tipo de cuenta
     SELECT COUNT(*) INTO v_tipo_exist
     FROM TIPO_CUENTA
@@ -1771,6 +2063,10 @@ create PROCEDURE consultarMovsFechClien(
     v_fecha_inicio DATE;
     v_fecha_fin DATE;
 BEGIN
+    IF p_id_cliente = 0 OR p_id_cliente IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001,'El parametro cliente no puede ser nulo');
+        RETURN;
+    end if;
     --VERIFICAR SI EXISTE EL ID DEL CLIENTE
     SELECT COUNT(*)
     INTO v_cliente_exist
